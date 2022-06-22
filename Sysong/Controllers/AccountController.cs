@@ -39,7 +39,7 @@ namespace Sysong.Controllers
 
                     if (userIsAdmin)
                     {
-                        return RedirectToAction("Index", "Home", new { area = "admin" });
+                        return RedirectToAction("Index", "Home", new { area = "Admin" });
                     }
 
                     return RedirectToAction("Index", "Home");
@@ -48,6 +48,16 @@ namespace Sysong.Controllers
 
             ModelState.AddModelError("", "Nome do usuário ou senha inválidos!");
             return View("Index", loginViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            HttpContext.Session.Clear();
+            HttpContext.User = null;
+
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

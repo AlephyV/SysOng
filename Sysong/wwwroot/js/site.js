@@ -68,3 +68,7 @@
     });
     $('.chips').chips();
 });
+
+function logout() {
+    $("#logout-form").submit();
+}

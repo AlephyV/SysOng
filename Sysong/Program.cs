@@ -18,6 +18,9 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 
 builder.Services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
 
+builder.Services.AddMemoryCache();
+builder.Services.AddSession();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -39,6 +42,12 @@ app.UseAuthorization();
 ISeedUserRoleInitial seedUserRoleInitial = app.Services.CreateScope().ServiceProvider.GetRequiredService<ISeedUserRoleInitial>();
 seedUserRoleInitial.SeedRoles();
 seedUserRoleInitial.SeedUsers();
+
+app.UseSession();
+
+app.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",

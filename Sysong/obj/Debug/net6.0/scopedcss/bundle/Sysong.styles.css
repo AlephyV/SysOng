@@ -1,0 +1,18 @@
+/* _content/Sysong/Views/Home/Index.cshtml.rz.scp.css */
+.welcomeImg[b-cjtwwoijug], .my-wrapper[b-cjtwwoijug] {
+    width: 110%;
+}
+
+.row h1[b-cjtwwoijug] {
+    overflow-wrap: break-word;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.innerdiv[b-cjtwwoijug] {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
